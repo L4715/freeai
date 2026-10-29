@@ -59,6 +59,7 @@ export default function App() {
         >
           <option value="deepseek-chat">DeepSeek-V3</option>
           <option value="gpt-4o-mini">OpenAI GPT-4o-mini</option>
+          <option value="gemini-1.5-flash">Google Gemini 1.5 Flash</option>  {/* <-- 加这行 */}
         </select>
       </header>
 
