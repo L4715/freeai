@@ -7,6 +7,7 @@ type Env = {
   MEDIA_BUCKET: R2Bucket;
   OPENAI_API_KEY?: string;
   DEEPSEEK_API_KEY?: string;
+  GEMINI_API_KEY?: string; // 加入 Gemini 变量类型
 };
 
 const app = new Hono<{ Bindings: Env }>().basePath('/api');
@@ -33,6 +34,10 @@ app.post('/chat', async (c) => {
   } else if (route.provider === 'openai') {
     apiUrl = 'https://api.openai.com/v1/chat/completions';
     apiKey = c.env.OPENAI_API_KEY || '';
+  } else if (route.provider === 'gemini') {
+    // Google AI Studio 原生 OpenAI 兼容地址
+    apiUrl = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions';
+    apiKey = c.env.GEMINI_API_KEY || '';
   }
 
   if (!apiKey) {
