@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 export default function App() {
   const [messages, setMessages] = useState<{role: string, content: string}[]>([]);
   const [input, setInput] = useState('');
-  const [model, setModel] = useState('deepseek-chat');
+  const [model, setModel] = useState('gemini-1.5-flash');
   const [loading, setLoading] = useState(false);
 
   const sendMessage = async () => {
@@ -55,11 +55,11 @@ export default function App() {
         <select 
           value={model} 
           onChange={(e) => setModel(e.target.value)}
-          className="border p-2 rounded bg-white"
+          className="border p-2 rounded bg-white shadow-sm"
         >
+          <option value="gemini-1.5-flash">Google Gemini 1.5 Flash</option>
           <option value="deepseek-chat">DeepSeek-V3</option>
           <option value="gpt-4o-mini">OpenAI GPT-4o-mini</option>
-          <option value="gemini-1.5-flash">Google Gemini 1.5 Flash</option>  {/* <-- 加这行 */}
         </select>
       </header>
 
